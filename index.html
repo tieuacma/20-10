@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Chuc mung ngay 8/3</title>
+    <link type="text/css" rel="stylesheet" href="./asset/style.css">
+    <script type="text/javascript" src="./asset/jquery.min.js"></script>
+    <script type="text/javascript" src="./asset/jscex.min.js"></script>
+    <script type="text/javascript" src="./asset/jscex-parser.js"></script>
+    <script type="text/javascript" src="./asset/jscex-jit.js"></script>
+    <script type="text/javascript" src="./asset/jscex-builderbase.min.js"></script>
+    <script type="text/javascript" src="./asset/jscex-async.min.js"></script>
+    <script type="text/javascript" src="./asset/jscex-async-powerpack.min.js"></script>
+    <script type="text/javascript" src="./asset/functions.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./asset/love.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="start-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;">
+        <div class="start-card" style="background:#fff;padding:24px;border-radius:8px;max-width:480px;width:90%;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,0.3);position:relative;overflow:hidden;">
+            <h2 class="start-title" style="margin:0 0 8px;font-family:inherit;">Nhập tên của bé iuuuu <span class="title-heart">❤</span></h2>
+            <input id="username-input" class="start-input" type="text" placeholder="Nhập tên..." style="width:100%;padding:8px;margin:8px 0;font-size:16px;border:1px solid #ccc;border-radius:4px;" />
+            <button id="start-button" class="start-btn" disabled style="padding:10px 16px;font-size:16px;margin-top:8px;cursor:not-allowed;border-radius:4px;background:#e91e63;color:#fff;border:none;">Sẵn sàng nhận lời chúc yêu thương</button>
+        </div>
+    </div>
+    <div id="main">
+        <div id="wrap">
+            <div id="text" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">
+                <div id="code">
+                    <font color="#000">
+                        <span class="say">Gửi đến bé iu {username}, người con gái đặc biệt đang đọc những dòng này, lời chúc ngọt ngào và lãng mạn nhất. Em là một món quà tuyệt vời mà cuộc sống đã ban tặng. Hãy luôn nhớ rằng, em xứng đáng nhận được tất cả những điều tốt đẹp, những yêu thương chân thành và sự trân trọng vô bờ bến. Dù bạn là ai, đang ở đâu, hay làm công việc gì, em đều là nguồn cảm hứng, là điểm tựa ấm áp và là điều tuyệt vời nhất của thế giới này.</span><br>
+                        <span class="say">Mong rằng, không chỉ riêng ngày 20/10 mà mọi ngày trong đời, em sẽ luôn được vây quanh bởi tình yêu thương, niềm vui và hạnh phúc. Chúc {username} mãi giữ được sự rạng rỡ, sự tự tin và nét duyên dáng vốn có. Hãy cứ sống hết mình, kiêu hãnh với những gì mình đang có và tự tin tỏa sáng theo cách riêng của mình, bởi vì em là duy nhất và vô giá.</span><br>
+                        <span class="say">Yêu {username} thật nhiều! Chúc em một ngày 20/10 ngập tràn những điều lãng mạn và tuyệt vời nhất!</span>
+                        <span class="say"></span><br>
+                        <span class="say"><span class="space"><img width="100px" height="100px" src="image/tym.png" alt=""><br>
+                        <span class="say"><span class="space"></span> -OUR GIRLS- </span>
+                    </font>
+                    </p>
+                    <div id="clock", display="none"></div>
+                    <script>
+                    </script>
+                </div>
+                
+            </div>
+            <canvas id="canvas" width="1100" height="680"></canvas>
+        </div>
+
+    </div>
+
+    <audio id="myAudio">
+        <source src="music/nhac.mp3" type="audio/mp3" />
+    </audio>
+
+</body>
+<script src="./asset/script.js"></script>
+
+</html>

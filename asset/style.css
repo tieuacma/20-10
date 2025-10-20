@@ -1,0 +1,273 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffe;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #231f20;
+  overflow: auto;
+}
+a {
+  color: #000;
+  font-size: 14px;
+}
+#main {
+  width: 100%;
+}
+#wrap {
+  position: relative;
+  margin: 0 auto;
+  width: 1100px;
+  height: 680px;
+  margin-top: 10px;
+}
+#text {
+  width: 400px;
+  height: 425px;
+  left: 60px;
+  top: 80px;
+  position: absolute;
+}
+#code {
+  display: none;
+  font-size: 16px;
+}
+#clock-box {
+  position: absolute;
+  left: 60px;
+  top: 550px;
+  font-size: 28px;
+  display: none;
+}
+#clock-box a {
+  font-size: 28px;
+  text-decoration: none;
+}
+#clock {
+  margin-left: 48px;
+}
+#clock .digit {
+  font-size: 64px;
+}
+#canvas {
+  margin: 0 auto;
+  width: 1100px;
+  height: 680px;
+}
+#error {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 60px;
+  display: none;
+}
+.hand {
+  cursor: pointer;
+}
+.say {
+  margin-left: 5px;
+  font-size: 32px; /* increased default size */
+}
+
+/* Decorative text styles */
+.say {
+  color: #2b1b2a;
+  background: linear-gradient(90deg, rgba(255,245,250,0.6), rgba(255,250,245,0.3));
+  padding: 6px 10px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(227, 47, 102, 0.06);
+  display: inline-block;
+}
+.say-large .say {
+  font-size: 64px; /* when the container has .say-large, make .say even bigger */
+}
+.space {
+  margin-right: 150px;
+}
+
+/* Cute overlay styles for username entry */
+.start-overlay {
+  backdrop-filter: blur(4px);
+}
+.start-card {
+  background: linear-gradient(180deg, #fff8fb 0%, #fff 100%);
+  border: 2px solid rgba(233,30,99,0.08);
+  box-shadow: 0 12px 36px rgba(233,30,99,0.12);
+}
+.start-title {
+  font-size: 20px;
+  color: #e91e63;
+  letter-spacing: 0.4px;
+}
+/* per-character hearts removed */
+.start-input:focus {
+  outline: none;
+  box-shadow: 0 6px 18px rgba(233,30,99,0.12);
+  transform: translateY(-2px);
+}
+.start-btn {
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.start-btn:hover:not([disabled]) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(233,30,99,0.18);
+}
+
+/* Cuter overlay/input/button */
+.start-overlay { background: rgba(0,0,0,0.55); }
+.start-card { max-width: 520px; padding: 28px; border-radius: 14px; }
+.start-title { font-size: 22px; }
+.title-heart {
+  font-size: 20px;
+  display: inline-block;
+  transform-origin: center;
+  color: #ff4f89; /* base pink */
+  text-shadow: 0 0 0 rgba(255,100,150,0);
+  /* combine scale pulse and color/glow pulse */
+  animation: heart-beat 0.9s infinite ease-in-out, heart-color 1.2s infinite ease-in-out;
+}
+
+@keyframes heart-color {
+  0% { color: #ffc1d6; text-shadow: 0 0 0 rgba(255,140,180,0); }
+  40% { color: #ff4f89; text-shadow: 0 8px 20px rgba(255,95,150,0.18); }
+  100% { color: #ffc1d6; text-shadow: 0 0 0 rgba(255,140,180,0); }
+}
+
+@keyframes heart-beat {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.12) rotate(-4deg); }
+  50% { transform: scale(0.98) rotate(3deg); }
+  75% { transform: scale(1.06) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.start-input {
+  border: 1px solid #ffdfe9;
+  background: linear-gradient(180deg,#fff #fff, #fffaf6);
+  padding: 12px 14px;
+  font-size: 18px;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 6px rgba(255,233,241,0.6);
+}
+.start-input::placeholder { color: #eaa9c0; }
+.start-btn {
+  margin-top: 12px;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff77a9, #ff4f89);
+  box-shadow: 0 10px 26px rgba(255,90,140,0.14);
+  border: none;
+  color: white;
+  transition: transform .12s ease, box-shadow .18s ease, filter .12s ease;
+}
+.start-btn:disabled { opacity: 0.5; filter: grayscale(.1); cursor: not-allowed; }
+.start-btn:hover:not([disabled]) { filter: brightness(1.03) saturate(1.04); transform: translateY(-4px) scale(1.01); }
+
+/* small sparkle behind button on hover */
+.start-btn:hover:not([disabled])::after {
+  content: '✨';
+  margin-left: 8px;
+}
+
+/* floating hearts container (absolute inside .start-card) */
+.floating-heart {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+  animation: floatUp 3s linear forwards;
+}
+.floating-heart svg {
+  width: 100%;
+  height: 100%;
+  fill: #ff6b9a;
+}
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(0) scale(0.6) rotate(0deg); }
+  10% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-140px) scale(1.1) rotate(12deg); }
+}
+
+/* small burst animation for button click */
+.burst-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffd1e0;
+  pointer-events: none;
+  opacity: 0.95;
+  transform: scale(0.6);
+  animation: burst 450ms ease-out forwards;
+}
+@keyframes burst {
+  to { opacity: 0; transform: translateY(-36px) scale(1.8); }
+}
+
+/* per-character typed styles */
+.typed-char {
+  display: inline-block; /* preserve character flow but avoid rendering glitches */
+  position: relative; /* still allow absolutely positioned heart inside */
+  vertical-align: baseline;
+  line-height: 1.05; /* small tweak to avoid overlapping with heart */
+  font-kerning: normal; /* ensure kerning is applied */
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.02em; /* tiny spacing to prevent characters sticking */
+  padding-right: 0.02em; /* small buffer between characters */
+}
+
+/* per-character appearing animation: handled by adding .appearing class from JS */
+.typed-char.appearing {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  transition: opacity 260ms ease-out, transform 260ms cubic-bezier(.2,.9,.3,1);
+}
+.typed-char.appearing.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.typewriter-caret { display:inline-block; margin-left:2px; color:#e91e63; opacity:0.9; }
+
+/* word wrapper to prevent mid-word breaks while keeping inline flow */
+.typed-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* floating char heart (lightweight, doesn't affect layout) */
+.char-float {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  transform: translate(-50%, 0) scale(0.85);
+  animation: charFloat 900ms cubic-bezier(.2,.9,.3,1) forwards;
+  z-index: 9999;
+}
+.char-float svg { width:100%; height:100%; fill: #ff6b9a; filter: drop-shadow(0 4px 6px rgba(227,47,102,0.08)); }
+@keyframes charFloat {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(0.8); }
+  20% { opacity: 1; transform: translate(-50%, -6px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -36px) scale(1.08); }
+}
+
+/* cute sparkle (tiny star) */
+.char-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  transform: translate(-50%, 0) rotate(12deg);
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.6) 40%, transparent 60%);
+  box-shadow: 0 6px 10px rgba(255, 200, 230, 0.08);
+  border-radius: 2px;
+  animation: sparkle 600ms ease-out forwards;
+  z-index: 9999;
+}
+@keyframes sparkle {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(0.4) rotate(0deg); }
+  40% { opacity: 1; transform: translate(-50%, -6px) scale(1.05) rotate(8deg); }
+  100% { opacity: 0; transform: translate(-50%, -22px) scale(1.1) rotate(18deg); }
+}
+
